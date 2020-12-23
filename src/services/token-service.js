@@ -14,8 +14,16 @@ const TokenService = {
     return !!TokenService.getAuthToken()
   },
   makeBasicAuthToken(userName, password) {
-    const btoa = window.btoa(`${userName}:${password}`)
-    return `Basic ${btoa}`
+    console.log(userName, password);
+    const bsf = window.btoa(`${userName}:${password}`)
+    console.log(bsf);
+    const x =  Buffer
+      .from(bsf, 'base64')
+      .toString()
+      .split(':')
+    ;
+    console.log(x);
+    return `basic ${bsf}`
   },
 }
 
