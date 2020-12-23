@@ -1,5 +1,8 @@
 import config from '../config'
 
+  const userName = 'person'
+  const password = 'pass'
+
 const ThingApiService = {
   getThings() {
     return fetch(`${config.API_ENDPOINT}/things`, {
@@ -15,6 +18,7 @@ const ThingApiService = {
   getThing(thingId) {
     return fetch(`${config.API_ENDPOINT}/things/${thingId}`, {
       headers: {
+        Authorization: `Basic ${userName}:${password}`,
       },
     })
       .then(res =>
@@ -26,6 +30,7 @@ const ThingApiService = {
   getThingReviews(thingId) {
     return fetch(`${config.API_ENDPOINT}/things/${thingId}/reviews`, {
       headers: {
+        Authorization: `Basic ${userName}:${password}`,
       },
     })
       .then(res =>
@@ -39,6 +44,7 @@ const ThingApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        Authorization: `Basic ${userName}:${password}`,
       },
       body: JSON.stringify({
         thing_id: thingId,
