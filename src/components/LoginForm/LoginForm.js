@@ -15,6 +15,8 @@ export default class LoginForm extends Component {
     this.setState({error: null});
     const { user_name, password } = ev.target;
 
+    console.log(user_name, password);
+    
     ThingApiService.postLogin({
       user_name: user_name.value,
       password: password.value,

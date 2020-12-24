@@ -68,10 +68,25 @@ const ThingApiService = {
         if (!res.ok) {
           return res.json().then(e => Promise.reject(e))
         } else {
-          return res.json();
+          return res.json()
         }
       })
-  }
+  },
+  postUser(newUserData) {
+    console.log(newUserData);
+    return fetch(`${config.API_ENDPOINT}/users`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(newUserData),
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+},
 }
 
 export default ThingApiService
